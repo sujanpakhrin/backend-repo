@@ -14,9 +14,7 @@ services:
       - mysql_data:/var/lib/mysql
 
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: codeykenny/backend-repo:${IMAGE_TAG:-latest}
     container_name: assignment11-backend
     restart: unless-stopped
     environment:
