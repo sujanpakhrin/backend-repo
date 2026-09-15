@@ -83,5 +83,20 @@ jobs:
       - name: Verify deployment
         run: |
           docker compose ps
+
+          echo "Waiting for backend API..."
+
+          for i in {1..30}; do
+            if curl -fs http://localhost:5000/api/users; then
+              echo
+              echo "Backend API is ready!"
+              break
+            fi
+
+            echo "API not ready yet. Waiting 2 seconds..."
+            sleep 2
+          done
+
+          echo "Final API check:"
           curl -f http://localhost:5000/api/users
 
