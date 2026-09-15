@@ -16,6 +16,7 @@ services:
 
 
   backend:
+    build: .
     image: codeykenny/backend-repo:${IMAGE_TAG:-latest}
     container_name: assignment11-backend
     restart: unless-stopped
